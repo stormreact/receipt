@@ -27,7 +27,7 @@ describe('reducers', () => {
     })
 
     describe('when product is already in cart', () => {
-      it('should handle ADD_TO_CART action', () => {
+      it('should handle ADD_TO_CART action 1', () => {
         const state = {
           addedIds: [ 1, 2 ],
           quantityById: { 1: 1, 2: 1 }
@@ -38,6 +38,32 @@ describe('reducers', () => {
           quantityById: { 1: 1, 2: 2 }
         })
       })
+
+      it('should handle ADD_TO_CART action 2', () => {
+        const state = {
+          addedIds: [ 1, 2, 3 ],
+          quantityById: { 1: 1, 2: 2, 3:3 }
+        }
+
+        expect(cart(state, { type: 'ADD_TO_CART', productId: 3 })).toEqual({
+          addedIds: [ 1, 2, 3 ],
+          quantityById: { 1: 1, 2: 2, 3:4 }
+        })
+      })
+
+      it('should handle REMOVE_FROM_CART action 1', () => {
+        const state = {
+          addedIds: [ 1, 2 ],
+          quantityById: { 1: 1, 2: 2 }
+        }
+
+        expect(cart(state, { type: 'REMOVE_FROM_CART', productId: 2 })).toEqual({
+          addedIds: [ 1 ],
+          quantityById: { 1: 1 }
+        })
+      })
+
+
     })
   })
 })
