@@ -63,6 +63,29 @@ describe('reducers', () => {
         })
       })
 
+      it('should handle REMOVE_FROM_CART action 2', () => {
+        const state = {
+          addedIds: [ 1, 2, 3, 4 ],
+          quantityById: { 1: 1, 2: 2, 3: 2, 4: 5 }
+        }
+
+        expect(cart(state, { type: 'REMOVE_FROM_CART', productId: 1 })).toEqual({
+          addedIds: [ 2, 3, 4 ],
+          quantityById: { 2: 2, 3: 2, 4: 5 }
+        })
+      })
+
+      it('should handle REMOVE_FROM_CART action 3', () => {
+        const state = {
+          addedIds: [ 1, 2, 3, 4 ],
+          quantityById: { 1: 1, 2: 2, 3: 2, 4: 5 }
+        }
+
+        expect(cart(state, { type: 'REMOVE_FROM_CART', productId: 4 })).toEqual({
+          addedIds: [ 1, 2, 3],
+          quantityById: { 1: 1, 2: 2, 3: 2 }
+        })
+      })
 
     })
   })
