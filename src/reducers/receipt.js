@@ -4,7 +4,8 @@ import {
 } from '../constants/ActionTypes'
 
 const initialState = {
-  addedCarts: []
+  addedCarts: [],
+  receiptDetail: {}
 }
 
 const addedCarts = (state = initialState.addedCarts, action) => {
@@ -18,11 +19,16 @@ const addedCarts = (state = initialState.addedCarts, action) => {
   }
 }
 
+const receiptDetail = () => {
+  return { number: 1, user: "a@b.edu", total: 31.55, timestamp: "10:30"}
+}
+
 export const getAllCarts = state => state.addedCarts
 
 const receipt = (state = initialState, action) => {
   return {
-    addedCarts: addedCarts(state.addedCarts, action)
+    addedCarts: addedCarts(state.addedCarts, action),
+    receiptDetail : receiptDetail()
   }
 }
 
