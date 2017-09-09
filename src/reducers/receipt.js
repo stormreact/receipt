@@ -32,4 +32,26 @@ const receipt = (state = initialState, action) => {
   }
 }
 
+const byId = (state = {}, action) => {
+  switch (action.type) {
+    case RECEIVE_RECEIPTS:
+      return {
+        ...state,
+        ...action.receipt.reduce((obj, product) => {
+          obj[receipt.id] = receipt
+          return obj
+        }, {})
+      }
+    default:
+      const { receiptId } = action
+      if (receiptId) {
+        return {
+          ...state,
+          [receiptId]: receipt(state[receiptId], action)
+        }
+      }
+      return state
+  }
+}
+
 export default receipt
