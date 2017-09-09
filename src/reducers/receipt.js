@@ -20,7 +20,7 @@ const addedCarts = (state = initialState.addedCarts, action) => {
 }
 
 const receiptDetail = () => {
-  return { number: 1, user: "a@b.edu", total: 31.55, timestamp: "10:30"}
+  return { number: 1, user: "a@b.edu", total: 31.55, timestamp: Date.now()}
 }
 
 export const getAllCarts = state => state.addedCarts
