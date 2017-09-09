@@ -6,6 +6,11 @@ const receiveProducts = products => ({
   products: products
 })
 
+const receiveReceipts = receipts => ({
+  type: types.RECEIVE_RECEIPTS,
+  receipts: receipts
+})
+
 export const getAllProducts = () => dispatch => {
   shop.getProducts(products => {
     dispatch(receiveProducts(products))

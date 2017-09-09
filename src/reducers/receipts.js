@@ -1,6 +1,7 @@
 
 import {
-  CHECKOUT_SUCCESS
+  CHECKOUT_SUCCESS,
+  RECEIVE_RECEIPTS
 } from '../constants/ActionTypes'
 
 const initialState = {
@@ -25,7 +26,7 @@ const receiptDetail = () => {
 
 export const getAllCarts = state => state.addedCarts
 
-const receipt = (state = initialState, action) => {
+const receipts = (state = initialState, action) => {
   return {
     addedCarts: addedCarts(state.addedCarts, action),
     receiptDetail : receiptDetail()
@@ -37,7 +38,7 @@ const byId = (state = {}, action) => {
     case RECEIVE_RECEIPTS:
       return {
         ...state,
-        ...action.receipt.reduce((obj, product) => {
+        ...action.receipts.reduce((obj, receipt) => {
           obj[receipt.id] = receipt
           return obj
         }, {})
@@ -47,11 +48,14 @@ const byId = (state = {}, action) => {
       if (receiptId) {
         return {
           ...state,
-          [receiptId]: receipt(state[receiptId], action)
+          [receiptId]: receipts(state[receiptId], action)
         }
       }
       return state
   }
 }
 
-export default receipt
+export const getReceipt = (state, id) =>
+  state.byId[id]
+
+export default receipts
