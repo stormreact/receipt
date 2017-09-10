@@ -28,7 +28,12 @@ const receiptDetail = (action) => {
   //console.log(action.cart)
   //return { number: 1, user: "a@b.edu", total: 31.55, timestamp: Date.now()}
 
-  return action.cart
+  return {
+    cart:action.cart,
+    timestamp : Date.now(),
+    total: 31.55,
+    user: "a@b.edu"
+ }
 }
 
 export const getAllCarts = state => state.addedCarts
