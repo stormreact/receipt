@@ -4,10 +4,14 @@ import {
   RECEIVE_RECEIPTS
 } from '../constants/ActionTypes'
 
+const initialState = {}
+
+/*
 const initialState = {
   addedCarts: [],
   receiptDetail: {}
 }
+*/
 
 const addedCarts = (state = initialState.addedCarts, action) => {
   switch (action.type) {
@@ -26,14 +30,65 @@ const receiptDetail = () => {
 
 export const getAllCarts = state => state.addedCarts
 
+//const receiptCounter = () => (receiptCounter() || 0) + 1
+
+/*
+class A {
+    constructor(){
+        this.id = ++A.counter;
+        console.log(this.id)
+    }
+
+    getCounter = () => {return(this.id))
+}
+A.counter = 0;
+*/
+
+function *Counter() {
+	let count = 0;
+	while(true) {
+		yield count++;
+	}
+}
+
+const counter = Counter();
+
+
+
+const receipts = (state = initialState.addedCarts, action) => {
+  switch (action.type) {
+    case CHECKOUT_SUCCESS:
+      console.log("Got a new cart !");
+      return { ...state,
+        [counter.next().value] : receiptDetail()
+      }
+    default:
+      return {...state}
+  }
+}
+
+
+
+/*
+const receipts = (state = initialState, action) => {
+  //console.log(counter.next().value)
+  return {
+    ...state,
+    [counter.next().value] : receiptDetail()
+  }
+}
+*/
+
+/*
 const receipts = (state = initialState, action) => {
   return {
     addedCarts: addedCarts(state.addedCarts, action),
     receiptDetail : receiptDetail()
   }
 }
+*/
 
-const byId = (state = {}, action) => {
+const byReceiptId = (state = {}, action) => {
   switch (action.type) {
     case RECEIVE_RECEIPTS:
       return {
@@ -56,6 +111,6 @@ const byId = (state = {}, action) => {
 }
 
 export const getReceipt = (state, id) =>
-  state.byId[id]
+  state.byReceiptId[id]
 
 export default receipts
