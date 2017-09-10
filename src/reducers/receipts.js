@@ -24,8 +24,11 @@ const addedCarts = (state = initialState.addedCarts, action) => {
   }
 }
 
-const receiptDetail = () => {
-  return { number: 1, user: "a@b.edu", total: 31.55, timestamp: Date.now()}
+const receiptDetail = (action) => {
+  //console.log(action.cart)
+  //return { number: 1, user: "a@b.edu", total: 31.55, timestamp: Date.now()}
+
+  return action.cart
 }
 
 export const getAllCarts = state => state.addedCarts
@@ -60,7 +63,8 @@ const receipts = (state = initialState.addedCarts, action) => {
     case CHECKOUT_SUCCESS:
       console.log("Got a new cart !");
       return { ...state,
-        [counter.next().value] : receiptDetail()
+        [counter.next().value] :
+          receiptDetail(action)
       }
     default:
       return {...state}
