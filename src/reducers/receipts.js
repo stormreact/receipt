@@ -1,33 +1,18 @@
 
 import {
+  CHECKOUT_SUCCESS
+} from '../constants/ActionTypes'
+
+/*
+import {
   CHECKOUT_SUCCESS,
   RECEIVE_RECEIPTS
 } from '../constants/ActionTypes'
+*/
 
 const initialState = {}
 
-/*
-const initialState = {
-  addedCarts: [],
-  receiptDetail: {}
-}
-*/
-
-const addedCarts = (state = initialState.addedCarts, action) => {
-  switch (action.type) {
-    case CHECKOUT_SUCCESS:
-      console.log("Got a new cart !");
-      return [ ...state, action.cart ]
-
-    default:
-      return state
-  }
-}
-
 const receiptDetail = (action) => {
-  //console.log(action.cart)
-  //return { number: 1, user: "a@b.edu", total: 31.55, timestamp: Date.now()}
-
   return {
     cart:action.cart,
     timestamp : Date.now(),
@@ -36,20 +21,8 @@ const receiptDetail = (action) => {
  }
 }
 
-export const getAllCarts = state => state.addedCarts
-
-//const receiptCounter = () => (receiptCounter() || 0) + 1
-
 /*
-class A {
-    constructor(){
-        this.id = ++A.counter;
-        console.log(this.id)
-    }
-
-    getCounter = () => {return(this.id))
-}
-A.counter = 0;
+https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function*
 */
 
 function *Counter() {
@@ -61,12 +34,9 @@ function *Counter() {
 
 const counter = Counter();
 
-
-
 const receipts = (state = initialState.addedCarts, action) => {
   switch (action.type) {
     case CHECKOUT_SUCCESS:
-      console.log("Got a new cart !");
       return { ...state,
         [counter.next().value] :
           receiptDetail(action)
@@ -76,27 +46,7 @@ const receipts = (state = initialState.addedCarts, action) => {
   }
 }
 
-
-
 /*
-const receipts = (state = initialState, action) => {
-  //console.log(counter.next().value)
-  return {
-    ...state,
-    [counter.next().value] : receiptDetail()
-  }
-}
-*/
-
-/*
-const receipts = (state = initialState, action) => {
-  return {
-    addedCarts: addedCarts(state.addedCarts, action),
-    receiptDetail : receiptDetail()
-  }
-}
-*/
-
 const byReceiptId = (state = {}, action) => {
   switch (action.type) {
     case RECEIVE_RECEIPTS:
@@ -121,5 +71,6 @@ const byReceiptId = (state = {}, action) => {
 
 export const getReceipt = (state, id) =>
   state.byReceiptId[id]
+*/
 
 export default receipts

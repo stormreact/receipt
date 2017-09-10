@@ -6,6 +6,7 @@ const receiveProducts = products => ({
   products: products
 })
 
+// eslint-disable-next-line
 const receiveReceipts = receipts => ({
   type: types.RECEIVE_RECEIPTS,
   receipts: receipts
