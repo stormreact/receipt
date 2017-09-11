@@ -38,9 +38,10 @@ const counter = Counter();
 const receipts = (state = initialState.addedCarts, action) => {
   switch (action.type) {
     case CHECKOUT_SUCCESS:
+      let mycounter = counter.next().value;
+      let myreceipt = receiptDetail(action);
       return { ...state,
-        [counter.next().value] :
-          receiptDetail(action)
+        [mycounter] : myreceipt
       }
     default:
       return {...state}
