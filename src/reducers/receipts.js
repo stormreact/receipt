@@ -1,14 +1,15 @@
+import { combineReducers } from 'redux'
 
+/*
 import {
   CHECKOUT_SUCCESS
 } from '../constants/ActionTypes'
+*/
 
-/*
 import {
   CHECKOUT_SUCCESS,
   RECEIVE_RECEIPTS
 } from '../constants/ActionTypes'
-*/
 
 const initialState = {}
 
@@ -46,7 +47,7 @@ const receipts = (state = initialState.addedCarts, action) => {
   }
 }
 
-/*
+
 const byReceiptId = (state = {}, action) => {
   switch (action.type) {
     case RECEIVE_RECEIPTS:
@@ -69,8 +70,25 @@ const byReceiptId = (state = {}, action) => {
   }
 }
 
-export const getReceipt = (state, id) =>
-  state.byReceiptId[id]
-*/
+const receiptIds = (state = [], action) => {
+  switch (action.type) {
+    case RECEIVE_RECEIPTS:
+      return action.receipts.map(receipt => receipt.id)
+    default:
+      return state
+  }
+}
 
-export default receipts
+export default combineReducers({
+  byReceiptId,
+  receiptIds,
+  receipts
+})
+
+export const getReceipt = (state, id) =>
+    state.byReceiptId[id]
+
+export const getVisibleReceipts = state =>
+  state.visibleIds.map(id => getReceipt(state, id))
+
+// export default receipts
