@@ -13,12 +13,15 @@ import {
 
 const initialState = {}
 
-const receiptDetail = (action) => {
+const receiptDetail = (action,id) => {
   return {
     cart:action.cart,
-    timestamp : Date.now(),
-    total: 31.55,
-    user: "a@b.edu"
+    detail: {
+      id: id,
+      timestamp : Date.now(),
+      total: 31.55,
+      user: "a@b.edu"
+    }
  }
 }
 
@@ -39,7 +42,7 @@ const receipts = (state = initialState.addedCarts, action) => {
   switch (action.type) {
     case CHECKOUT_SUCCESS:
       let mycounter = counter.next().value;
-      let myreceipt = receiptDetail(action);
+      let myreceipt = receiptDetail(action,mycounter);
       return { ...state,
         [mycounter] : myreceipt
       }
