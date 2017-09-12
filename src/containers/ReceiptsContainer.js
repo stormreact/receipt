@@ -1,11 +1,4 @@
 import React from "react";
-/*
-import PropTypes from "prop-types";
-import { connect } from "react-redux";
-import { receiptDetail } from "../actions";
-import { getReceipts } from "../reducers";
-*/
-
 import { Flex, Box } from "grid-styled";
 import TableReceipt from './TableReceipt';
 
