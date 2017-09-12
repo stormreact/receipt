@@ -12,7 +12,7 @@ const Receipt  = ({ products, total, onCheckoutClicked }) => {
       </button>
       </div>
   ) : (
-      <em>Please add some products to cart.</em>
+      <em>You do not have any receipts.</em>
   )
   return (
     <div>{nodes}</div>
