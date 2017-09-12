@@ -6,7 +6,6 @@ const receiveProducts = products => ({
   products: products
 })
 
-// eslint-disable-next-line
 const receiveReceipts = receipts => ({
   type: types.RECEIVE_RECEIPTS,
   receipts: receipts
@@ -15,6 +14,12 @@ const receiveReceipts = receipts => ({
 export const getAllProducts = () => dispatch => {
   shop.getProducts(products => {
     dispatch(receiveProducts(products))
+  })
+}
+
+export const getAllReceipts = () => dispatch => {
+  shop.getReceipts(receipts => {
+    dispatch(receiveReceipts(receipts))
   })
 }
 
