@@ -60,3 +60,11 @@ export const checkout = products => (dispatch, getState) => {
     // dispatch({ type: types.CHECKOUT_FAILURE, cart })
   })
 }
+
+export const receiptDetail = receiptId => (dispatch, getState) => {
+/*
+  const quantityById = getState().cart.quantityById[productId]
+  dispatch(removeFromCartComplete(productId,quantityById))
+*/
+  console.log('receiptDetail was fired !');
+}

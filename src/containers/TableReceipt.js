@@ -1,10 +1,10 @@
 import React from "react";
 import { connect } from "react-redux";
-import { getReceipt } from "../actions";
+import { receiptDetail } from "../actions";
 import { getReceipts } from "../reducers/receipts";
 import * as Table from "reactabular-table";
 
-class TableProduct extends React.Component {
+class TableReceipt extends React.Component {
   constructor(props) {
     super(props);
 
@@ -55,7 +55,7 @@ class TableProduct extends React.Component {
             (value, { receiptData }) =>
               <span
                 className="remove"
-                onClick={() => this.props.addToCart(receiptData.id)}
+                onClick={() => this.props.receiptDetail(receiptData.id)}
                 style={{ cursor: "pointer" }}
               >
                 &#x271a;
@@ -93,5 +93,5 @@ const mapStateToProps = state => ({
 
 export default connect(
   mapStateToProps,
-  { getReceipt }
+  { receiptDetail }
 )(TableReceipt);

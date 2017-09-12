@@ -1,42 +1,22 @@
 import React from "react";
+/*
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
-import { checkout, removeFromCart } from "../actions";
-import { getTotal, getCartProducts } from "../reducers";
+import { receiptDetail } from "../actions";
+import { getReceipts } from "../reducers";
+*/
 
 import { Flex, Box } from "grid-styled";
-import TableCart from './TableCart';
+import TableReceipt from './TableReceipt';
 
-const ReceiptsContainer = ({ products, total, removeFromCart, checkout }) =>
+const ReceiptsContainer = () =>
   <div>
     <h2>Receipts</h2>
     <Flex>
       <Box px={2}>
-        <TableCart />
+        <TableReceipt />
       </Box>
     </Flex>
   </div>;
 
-ReceiptsContainer.propTypes = {
-  products: PropTypes.arrayOf(
-    PropTypes.shape({
-      id: PropTypes.number.isRequired,
-      title: PropTypes.string.isRequired,
-      price: PropTypes.number.isRequired,
-      quantity: PropTypes.number.isRequired
-    })
-  ).isRequired,
-  total: PropTypes.string,
-  removeFromCart: PropTypes.func.isRequired,
-  checkout: PropTypes.func.isRequired
-};
-
-const mapStateToProps = state => ({
-  products: getCartProducts(state),
-  total: getTotal(state)
-});
-
-export default connect(
-  mapStateToProps,
-  { checkout, removeFromCart }
-)(ReceiptsContainer);
+export default ReceiptsContainer;
