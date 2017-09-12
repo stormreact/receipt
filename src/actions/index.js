@@ -61,6 +61,10 @@ export const checkout = products => (dispatch, getState) => {
   })
 }
 
+export const getReceipts = () => {
+  console.log("getReceipts was clicked");
+}
+
 export const receiptDetail = receiptId => (dispatch, getState) => {
 /*
   const quantityById = getState().cart.quantityById[productId]
