@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { checkout, removeFromCart } from "../actions";
 import { getTotal, getCartProducts } from "../reducers";
-import Cart from "../components/Cart";
+import Receipt from "../components/Receipt";
 
 import { Flex, Box } from "grid-styled";
 import TableCart from './TableCart';
@@ -16,7 +16,7 @@ const ReceiptsContainer = ({ products, total, removeFromCart, checkout }) =>
         <TableCart />
       </Box>
     </Flex>
-    <Cart
+    <Receipt
       products={products}
       total={total}
       onCheckoutClicked={() => checkout(products)}
