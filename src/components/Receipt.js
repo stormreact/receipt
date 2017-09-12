@@ -2,12 +2,12 @@ import React from 'react'
 import PropTypes from 'prop-types'
 
 const Receipt  = ({ products, total, onCheckoutClicked }) => {
-  const hasProducts = products.length > 0
-  const nodes = hasProducts ? (
+  const hasReceipts = products.length > 0
+  const nodes = hasReceipts ? (
       <div>
       <p>Total: &#36;{total}</p>
       <button onClick={onCheckoutClicked}
-        disabled={hasProducts ? '' : 'disabled'}>
+        disabled={hasReceipts ? '' : 'disabled'}>
         Checkout
       </button>
       </div>
