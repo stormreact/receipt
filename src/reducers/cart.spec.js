@@ -104,6 +104,14 @@ describe('reducers', () => {
         expect(getQuantity(state, 2)).toEqual(7)
       })
 
+      it('calling function getQuantity with unknown ID ', () => {
+        const state = {
+          addedIds: [ 1, 2 ],
+          quantityById: { 1: 1, 2: 7 }
+        }
+        expect(getQuantity(state, 3)).toEqual(0)
+      })
+
     })
   })
 })
