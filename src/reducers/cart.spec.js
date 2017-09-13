@@ -1,5 +1,5 @@
 import cart from './cart'
-import { getAddedIds } from './cart'
+import { getAddedIds, getQuantity } from './cart'
 
 describe('reducers', () => {
   describe('cart', () => {
@@ -94,6 +94,14 @@ describe('reducers', () => {
           quantityById: { 1: 1, 2: 1 }
         }
         expect(getAddedIds(state)).toEqual([ 1, 2 ])
+      })
+
+      it('calling function getQuantity ', () => {
+        const state = {
+          addedIds: [ 1, 2 ],
+          quantityById: { 1: 1, 2: 7 }
+        }
+        expect(getQuantity(state, 2)).toEqual(7)
       })
 
     })
