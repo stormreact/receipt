@@ -1,4 +1,7 @@
-import reducer, * as products from './products'
+// import reducer, * as products from './products'
+// replace the above line with the 2 lines below for clarification
+import reducer from './products'
+import { getProduct, getVisibleProducts } from './products'
 
 describe('reducers', () => {
   describe('products', () => {
@@ -25,12 +28,12 @@ describe('reducers', () => {
       })
 
       it('contains the products from the action', () => {
-        expect(products.getProduct(state, 1)).toEqual({
+        expect(getProduct(state, 1)).toEqual({
           id: 1,
           title: 'Product 1',
             inventory: 2
         })
-        expect(products.getProduct(state, 2)).toEqual({
+        expect(getProduct(state, 2)).toEqual({
           id: 2,
           title: 'Product 2',
             inventory: 1
@@ -38,11 +41,11 @@ describe('reducers', () => {
       })
 
       it ('contains no other products', () => {
-        expect(products.getProduct(state, 3)).toEqual(undefined)
+        expect(getProduct(state, 3)).toEqual(undefined)
       })
 
       it('lists all of the products as visible', () => {
-        expect(products.getVisibleProducts(state)).toEqual([
+        expect(getVisibleProducts(state)).toEqual([
           {
             id: 1,
             title: 'Product 1',
@@ -62,7 +65,7 @@ describe('reducers', () => {
         })
 
         it('the inventory is reduced', () => {
-          expect(products.getVisibleProducts(state)).toEqual([
+          expect(getVisibleProducts(state)).toEqual([
             {
               id: 1,
               title: 'Product 1',
