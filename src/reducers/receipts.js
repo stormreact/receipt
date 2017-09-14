@@ -57,8 +57,10 @@ const byReceiptId = (state = {}, action) => {
       console.log("byReceiptId case that is not yet implemented");
 
     default:
+      //console.log("action = ", action);
       const { receiptId } = action
       if (receiptId) {
+        console.log("Got Receipt ID ", receiptId);
         return {
           ...state,
           [receiptId]: state[receiptId]
@@ -87,6 +89,6 @@ export const getReceipt = (state, id) =>
     state.byReceiptId[id]
 
 export const getReceipts = state =>
-  state.receiptIds.map(id => getReceipt(state, id))
+  state.receiptIds.map(id => getReceipt(state, action))
 
 // export default receipts

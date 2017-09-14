@@ -1,9 +1,8 @@
-import receipts from './receipts'
-import reducer, * as products from './products'
+import { getReceipt } from './receipts'
 
 describe('receipt initial state', () => {
   describe('receipt', () => {
-    const initialState = {
+    const state = {
         0: {
           cart: {
             addedIds: [
@@ -46,7 +45,7 @@ describe('receipt initial state', () => {
       expect("hi").toEqual("hi")
     })
 
-    expect(receipts(initialState, { type: 'GET_RECEIPT', receiptId: 1 })).toEqual({
+    expect(getReceipt(state,0)).toEqual({
       1: {
         cart: {
           addedIds: [
