@@ -38,7 +38,7 @@ function *Counter() {
 
 const counter = Counter();
 
-const receipts = (state = initialState.addedCarts, action) => {
+export const cartReceipts = (state = initialState.addedCarts, action) => {
   switch (action.type) {
     case CHECKOUT_SUCCESS:
       let mycounter = counter.next().value;
@@ -70,6 +70,7 @@ const byReceiptId = (state = {}, action) => {
   }
 }
 
+/*
 const receiptIds = (state = [], action) => {
   switch (action.type) {
     case RECEIVE_RECEIPTS:
@@ -78,17 +79,25 @@ const receiptIds = (state = [], action) => {
       return state
   }
 }
+*/
 
 export default combineReducers({
   byReceiptId,
-  receiptIds,
-  receipts
+  //receiptIds,
+  //checkoutReceipt
 })
 
 export const getReceipt = (state, id) =>
   state.byReceiptId[id]
 
-export const getReceipts = state =>
-  state.receiptIds.map(id => getReceipt(state, id))
+export const getReceipts = () => {
+  // state.receiptIds.map(id => getReceipt(state, id))
+  return {
+  id: 0,
+  timestamp: 1505173544745,
+  total: 31.55,
+  user: "a@b.edu"
+  }
+}
 
 // export default receipts
