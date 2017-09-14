@@ -51,23 +51,17 @@ const receipts = (state = initialState.addedCarts, action) => {
   }
 }
 
-
 const byReceiptId = (state = {}, action) => {
   switch (action.type) {
     case RECEIVE_RECEIPTS:
-      return {
-        ...state,
-        ...action.receipts.reduce((obj, receipt) => {
-          obj[receipt.id] = receipt
-          return obj
-        }, {})
-      }
+      console.log("byReceiptId case that is not yet implemented");
+
     default:
       const { receiptId } = action
       if (receiptId) {
         return {
           ...state,
-          [receiptId]: receipts(state[receiptId], action)
+          [receiptId]: state[receiptId]
         }
       }
       return state
