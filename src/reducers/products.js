@@ -23,6 +23,14 @@ const products = (state, action) => {
 const byId = (state = {}, action) => {
   switch (action.type) {
     case RECEIVE_PRODUCTS:
+
+      let me = action.products.reduce((obj, product) => {
+                obj[product.id] = product
+                return obj
+              }, {})
+
+      console.log('me ',me);
+
       return {
         ...state,
         ...action.products.reduce((obj, product) => {
