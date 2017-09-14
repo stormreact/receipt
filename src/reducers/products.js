@@ -29,7 +29,7 @@ const byId = (state = {}, action) => {
                 return obj
               }, {})
 
-      console.log('me ',me);
+      // console.log('me ',me);
 
       return {
         ...state,
