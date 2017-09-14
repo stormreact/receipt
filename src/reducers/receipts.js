@@ -89,6 +89,6 @@ export const getReceipt = (state, id) =>
   state.byReceiptId[id]
 
 export const getReceipts = state =>
-  state.receiptIds.map(id => getReceipt(state, action))
+  state.receiptIds.map(id => getReceipt(state, id))
 
 // export default receipts
