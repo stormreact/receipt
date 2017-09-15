@@ -97,6 +97,15 @@ export default combineReducers({
 export const getReceipt = (state, id) =>
   state.byReceiptId[id]
 
+export const getReceiptDetail = (state, id) =>
+    state.byReceiptId[id].detail
+
+export const getVisibleReceipts = state =>
+    state.visibleReceiptIds.map(id => getReceipt(state, id))
+
+export const getVisibleReceiptDetails = state =>
+        state.visibleReceiptIds.map(id => getReceiptDetail(state, id))
+
 export const getReceipts = () => {
   // state.receiptIds.map(id => getReceipt(state, id))
   return {
