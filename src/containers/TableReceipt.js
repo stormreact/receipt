@@ -1,7 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 import { receiptDetail } from "../actions";
-import { getReceipts } from "../reducers/receipts";
+import { getVisibleReceiptDetails } from "../reducers/receipts";
 import * as Table from "reactabular-table";
 
 class TableReceipt extends React.Component {
@@ -88,7 +88,7 @@ class TableReceipt extends React.Component {
 }
 
 const mapStateToProps = state => ({
-  rows: getReceipts(state.receipts)
+  rows: getVisibleReceiptDetails(state.receipts)
 });
 
 export default connect(
