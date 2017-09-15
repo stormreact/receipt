@@ -54,12 +54,12 @@ describe("receipt initial state", () => {
           {
             "cart": {
               "addedIds": [
-                2,
-                3
+                1,
+                4
               ],
               "quantityById": {
-                "2": 1,
-                "3": 1
+                "1": 1,
+                "4": 1
               }
             },
             "detail": {
@@ -72,12 +72,17 @@ describe("receipt initial state", () => {
         ]
       })
 
-      console.log(state);
-      //console.log("receiptEvent",receiptEvent)
 
-      // expect(cartReceipts(state, cartEvent)).toEqual(cartReceipt);
+      const r1000 = {
+      "cart": {"addedIds": [2, 3], "quantityById": {"2": 1, "3": 1}},
+      "detail": {"id": 1000, "timestamp": 1505173544745, "total": 131.55, "user": "a@b.edu"}}
 
-      expect("hi").toEqual("hi");
+      const r1001 = {
+      "cart": {"addedIds": [1, 4], "quantityById": {"1": 1, "4": 1}},
+      "detail": {"id": 1001, "timestamp": 1505173544745, "total": 31.55, "user": "a@b.edu"}}
+
+      expect(getReceipt(state,1000)).toEqual(r1000);
+      expect(getReceipt(state,1001)).toEqual(r1001);
     });
 
 
