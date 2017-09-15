@@ -1,17 +1,46 @@
 import { combineReducers } from 'redux'
 
-/*
-import {
-  CHECKOUT_SUCCESS
-} from '../constants/ActionTypes'
-*/
-
 import {
   CHECKOUT_SUCCESS,
-  RECEIVE_RECEIPTS
+  RECEIVE_RECEIPTS,
+  GET_RECEIPT
 } from '../constants/ActionTypes'
 
 const initialState = {}
+
+const receipts = (state, action) => {
+  switch (action.type) {
+    case GET_RECEIPT:
+      return {
+        ...state
+      }
+
+    default:
+      return state
+  }
+}
+
+const byReceiptId = (state = {}, action) => {
+  switch (action.type) {
+    case RECEIVE_RECEIPTS:
+      return {
+        ...state,
+        ...action.receipts.reduce((obj, receipt) => {
+          obj[receipt.id] = receipt
+          return obj
+        }, {})
+      }
+    default:
+      const { receiptId } = action
+      if (receiptId) {
+        return {
+          ...state,
+          [receiptId]: receipts(state[receiptId], action)
+        }
+      }
+      return state
+  }
+}
 
 const receiptDetail = (action,id) => {
   return {
@@ -51,40 +80,8 @@ export const cartReceipts = (state = initialState.addedCarts, action) => {
   }
 }
 
-const byReceiptId = (state = {}, action) => {
-  switch (action.type) {
-    case RECEIVE_RECEIPTS:
-      console.log("byReceiptId case that is not yet implemented");
-
-    default:
-      //console.log("action = ", action);
-      const { receiptId } = action
-      if (receiptId) {
-        console.log("Got Receipt ID ", receiptId);
-        return {
-          ...state,
-          [receiptId]: state[receiptId]
-        }
-      }
-      return state
-  }
-}
-
-/*
-const receiptIds = (state = [], action) => {
-  switch (action.type) {
-    case RECEIVE_RECEIPTS:
-      return action.receipts.map(receipt => receipt.id)
-    default:
-      return state
-  }
-}
-*/
-
 export default combineReducers({
   byReceiptId,
-  //receiptIds,
-  //checkoutReceipt
 })
 
 export const getReceipt = (state, id) =>
@@ -99,5 +96,3 @@ export const getReceipts = () => {
   user: "a@b.edu"
   }
 }
-
-// export default receipts
