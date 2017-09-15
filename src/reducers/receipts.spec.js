@@ -19,7 +19,7 @@ describe("receipt initial state", () => {
         0: {
           cart: {
             addedIds: [2],
-            quantityById: { "2": 1 }
+            quantityById: { 2: 1 }
           },
           detail: { id: 0, timestamp: 111, total: 31.55, user: "a@b.edu" }
         }
