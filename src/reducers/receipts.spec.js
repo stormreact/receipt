@@ -9,6 +9,7 @@ describe("receipt initial state", () => {
     it("should handle cartReceipts", () => {
       const state = {};
       const mycart = {
+        type: "CHECKOUT_SUCCESS",
         cart: {
           addedIds: [2],
           quantityById: { 2: 1 }
@@ -16,16 +17,8 @@ describe("receipt initial state", () => {
       };
 
       expect(
-        cartReceipts(state, {
-          type: "CHECKOUT_SUCCESS",
-
-          cart: {
-            addedIds: [2],
-            quantityById: {
-              2: 1
-            }
-          }
-        })
+        cartReceipts(state,mycart
+      )
       ).toEqual({
         "0": {
           cart: {
