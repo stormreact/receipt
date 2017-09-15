@@ -1,5 +1,5 @@
-{
-  "0": {
+[
+  {
     "cart": {
       "addedIds": [
         2,
@@ -11,13 +11,13 @@
       }
     },
     "detail": {
-      "id": 0,
+      "id": 1000,
       "timestamp": 1505173544745,
-      "total": 31.55,
+      "total": 131.55,
       "user": "a@b.edu"
     }
   },
-  "1": {
+  {
     "cart": {
       "addedIds": [
         2,
@@ -29,10 +29,10 @@
       }
     },
     "detail": {
-      "id": 0,
+      "id": 1001,
       "timestamp": 1505173544745,
       "total": 31.55,
       "user": "a@b.edu"
     }
   }
-}
+]

@@ -27,6 +27,56 @@ describe("receipt initial state", () => {
       expect(cartReceipts(state, cartEvent)).toEqual(cartReceipt);
     });
 
+    it("should handle receiving a set of receipts", () => {
+      const state = {};
+      const receiptEvent = {
+        type: "RECEIVE_RECEIPTS",
+        receipts: [
+          {
+            "cart": {
+              "addedIds": [
+                2,
+                3
+              ],
+              "quantityById": {
+                "2": 1,
+                "3": 1
+              }
+            },
+            "detail": {
+              "id": 1000,
+              "timestamp": 1505173544745,
+              "total": 131.55,
+              "user": "a@b.edu"
+            }
+          },
+          {
+            "cart": {
+              "addedIds": [
+                2,
+                3
+              ],
+              "quantityById": {
+                "2": 1,
+                "3": 1
+              }
+            },
+            "detail": {
+              "id": 1001,
+              "timestamp": 1505173544745,
+              "total": 31.55,
+              "user": "a@b.edu"
+            }
+          }
+        ]
+      };
+
+      console.log("receiptEvent",receiptEvent)
+
+      expect("hi").toEqual("hi");
+    });
+
+
     /*
     it('should handle cartReceipts', () => {
           const state = {
