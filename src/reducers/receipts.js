@@ -18,7 +18,7 @@ const receiptDetail = (action,id) => {
     cart:action.cart,
     detail: {
       id: id,
-      timestamp : Date.now(),
+      timestamp : 111,  // Date.now()
       total: 31.55,
       user: "a@b.edu"
     }
