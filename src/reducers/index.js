@@ -2,10 +2,12 @@ import { combineReducers } from 'redux'
 import cart, * as fromCart from './cart'
 import { cartReceipts } from './receipts'
 import products, * as fromProducts from './products'
+import receipts from './receipts'
 
 export default combineReducers({
   cart,
   products,
+  receipts,
   cartReceipts
 })
 
