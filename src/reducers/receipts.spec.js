@@ -24,7 +24,7 @@ describe("receipt initial state", () => {
           detail: { id: 0, timestamp: 111, total: 31.55, user: "a@b.edu" }
         }
       };
-      expect(cartReceipts(state,cartEvent)).toEqual(cartReceipt);
+      expect(cartReceipts(state, cartEvent)).toEqual(cartReceipt);
     });
 
     /*
