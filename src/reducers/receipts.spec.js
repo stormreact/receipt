@@ -8,7 +8,7 @@ describe("receipt initial state", () => {
 
     it("should handle cartReceipts", () => {
       const state = {};
-      const mycart = {
+      const cartEvent = {
         type: "CHECKOUT_SUCCESS",
         cart: {
           addedIds: [2],
@@ -16,18 +16,21 @@ describe("receipt initial state", () => {
         }
       };
 
-      expect(
-        cartReceipts(state,mycart
-      )
-      ).toEqual({
-        "0": {
+      const cartReceipt = {
+        0: {
           cart: {
             addedIds: [2],
             quantityById: { "2": 1 }
           },
           detail: { id: 0, timestamp: 111, total: 31.55, user: "a@b.edu" }
         }
-      });
+      };
+
+      expect(
+        cartReceipts(state,cartEvent
+      )
+    ).toEqual(cartReceipt
+    );
     });
 
     /*
