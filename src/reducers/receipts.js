@@ -42,6 +42,15 @@ const byReceiptId = (state = {}, action) => {
   }
 }
 
+const visibleReceiptIds = (state = [], action) => {
+  switch (action.type) {
+    case RECEIVE_RECEIPTS:
+      return action.receipts.map(receipt => receipt.detail.id)
+    default:
+      return state
+  }
+}
+
 const receiptDetail = (action,id) => {
   return {
     cart:action.cart,
@@ -82,6 +91,7 @@ export const cartReceipts = (state = initialState.addedCarts, action) => {
 
 export default combineReducers({
   byReceiptId,
+  visibleReceiptIds
 })
 
 export const getReceipt = (state, id) =>
