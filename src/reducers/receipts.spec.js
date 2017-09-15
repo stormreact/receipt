@@ -1,4 +1,5 @@
 import { getReceipt, cartReceipts } from "./receipts";
+import reducer from './receipts'
 
 describe("receipt initial state", () => {
   describe("receipt", () => {
@@ -28,8 +29,8 @@ describe("receipt initial state", () => {
     });
 
     it("should handle receiving a set of receipts", () => {
-      const state = {};
-      const receiptEvent = {
+
+        const state = reducer({}, {
         type: "RECEIVE_RECEIPTS",
         receipts: [
           {
@@ -69,9 +70,12 @@ describe("receipt initial state", () => {
             }
           }
         ]
-      };
+      })
 
-      console.log("receiptEvent",receiptEvent)
+      console.log(state);
+      //console.log("receiptEvent",receiptEvent)
+
+      // expect(cartReceipts(state, cartEvent)).toEqual(cartReceipt);
 
       expect("hi").toEqual("hi");
     });

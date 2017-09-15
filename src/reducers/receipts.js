@@ -26,7 +26,7 @@ const byReceiptId = (state = {}, action) => {
       return {
         ...state,
         ...action.receipts.reduce((obj, receipt) => {
-          obj[receipt.id] = receipt
+          obj[receipt.detail.id] = receipt
           return obj
         }, {})
       }
