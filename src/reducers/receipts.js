@@ -6,7 +6,7 @@ import {
   GET_RECEIPT
 } from '../constants/ActionTypes'
 
-const initialState = {}
+// const initialState = {}
 
 const receipts = (state, action) => {
   switch (action.type) {
@@ -29,6 +29,12 @@ const byReceiptId = (state = {}, action) => {
           obj[receipt.detail.id] = receipt
           return obj
         }, {})
+      }
+    case CHECKOUT_SUCCESS:
+      let mycounter = counter.next().value;
+      let myreceipt = receiptDetail(action,mycounter);
+      return { ...state,
+        [mycounter] : myreceipt
       }
     default:
       const { receiptId } = action
@@ -76,6 +82,7 @@ function *Counter() {
 
 const counter = Counter();
 
+/*
 export const cartReceipts = (state = initialState.addedCarts, action) => {
   switch (action.type) {
     case CHECKOUT_SUCCESS:
@@ -88,6 +95,7 @@ export const cartReceipts = (state = initialState.addedCarts, action) => {
       return {...state}
   }
 }
+*/
 
 export default combineReducers({
   byReceiptId,
