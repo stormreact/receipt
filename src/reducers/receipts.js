@@ -6,8 +6,6 @@ import {
   GET_RECEIPT
 } from '../constants/ActionTypes'
 
-// const initialState = {}
-
 const receipts = (state, action) => {
   switch (action.type) {
     case GET_RECEIPT:
@@ -18,6 +16,18 @@ const receipts = (state, action) => {
     default:
       return state
   }
+}
+
+const receiptDetail = (action) => {
+  return {
+    cart:action.cart,
+    detail: {
+      id: action.mycounter,
+      timestamp : 111,  // Date.now()
+      total: 31.55,
+      user: "a@b.edu"
+    }
+ }
 }
 
 const byReceiptId = (state = {}, action) => {
@@ -60,33 +70,6 @@ const visibleReceiptIds = (state = [], action) => {
   }
 }
 
-const receiptDetail = (action) => {
-  return {
-    cart:action.cart,
-    detail: {
-      id: action.mycounter,
-      timestamp : 111,  // Date.now()
-      total: 31.55,
-      user: "a@b.edu"
-    }
- }
-}
-
-/*
-export const cartReceipts = (state = initialState.addedCarts, action) => {
-  switch (action.type) {
-    case CHECKOUT_SUCCESS:
-      let mycounter = counter.next().value;
-      let myreceipt = receiptDetail(action,mycounter);
-      return { ...state,
-        [mycounter] : myreceipt
-      }
-    default:
-      return {...state}
-  }
-}
-*/
-
 export default combineReducers({
   byReceiptId,
   visibleReceiptIds
@@ -102,14 +85,4 @@ export const getVisibleReceipts = state =>
     state.visibleReceiptIds.map(id => getReceipt(state, id))
 
 export const getVisibleReceiptDetails = state =>
-        state.visibleReceiptIds.map(id => getReceiptDetail(state, id))
-
-export const getReceipts = () => {
-  // state.receiptIds.map(id => getReceipt(state, id))
-  return {
-  id: 0,
-  timestamp: 1505173544745,
-  total: 31.55,
-  user: "a@b.edu"
-  }
-}
+    state.visibleReceiptIds.map(id => getReceiptDetail(state, id))
