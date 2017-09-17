@@ -52,6 +52,9 @@ const visibleReceiptIds = (state = [], action) => {
   switch (action.type) {
     case RECEIVE_RECEIPTS:
       return action.receipts.map(receipt => receipt.detail.id)
+    case CHECKOUT_SUCCESS:
+      let mycounter = action.mycounter;
+      return [ ...state, mycounter ]
     default:
       return state
   }
