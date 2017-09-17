@@ -31,8 +31,8 @@ const byReceiptId = (state = {}, action) => {
         }, {})
       }
     case CHECKOUT_SUCCESS:
-      let mycounter = counter.next().value;
-      let myreceipt = receiptDetail(action,mycounter);
+      let mycounter = action.mycounter;
+      let myreceipt = receiptDetail(action);
       return { ...state,
         [mycounter] : myreceipt
       }
@@ -57,30 +57,17 @@ const visibleReceiptIds = (state = [], action) => {
   }
 }
 
-const receiptDetail = (action,id) => {
+const receiptDetail = (action) => {
   return {
     cart:action.cart,
     detail: {
-      id: id,
+      id: action.mycounter,
       timestamp : 111,  // Date.now()
       total: 31.55,
       user: "a@b.edu"
     }
  }
 }
-
-/*
-https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function*
-*/
-
-function *Counter() {
-	let count = 0;
-	while(true) {
-		yield count++;
-	}
-}
-
-const counter = Counter();
 
 /*
 export const cartReceipts = (state = initialState.addedCarts, action) => {

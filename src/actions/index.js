@@ -1,6 +1,19 @@
 import shop from '../api/shop'
 import * as types from '../constants/ActionTypes'
 
+/*
+https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function*
+*/
+
+function *Counter() {
+	let count = 0;
+	while(true) {
+		yield count++;
+	}
+}
+
+const counter = Counter();
+
 const receiveProducts = products => ({
   type: types.RECEIVE_PRODUCTS,
   products: products
@@ -47,6 +60,7 @@ export const removeFromCart = productId => (dispatch, getState) => {
 
 export const checkout = products => (dispatch, getState) => {
   const { cart } = getState()
+  let mycounter = counter.next().value;
 
   dispatch({
     type: types.CHECKOUT_REQUEST
@@ -54,7 +68,8 @@ export const checkout = products => (dispatch, getState) => {
   shop.buyProducts(products, () => {
     dispatch({
       type: types.CHECKOUT_SUCCESS,
-      cart
+      cart,
+      mycounter
     })
     // Replace the line above with line below to rollback on failure:
     // dispatch({ type: types.CHECKOUT_FAILURE, cart })
