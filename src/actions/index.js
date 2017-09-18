@@ -59,7 +59,7 @@ export const removeFromCart = productId => (dispatch, getState) => {
 }
 
 export const checkout = products => (dispatch, getState) => {
-  const { cart } = getState()
+  const state = getState()
   let mycounter = counter.next().value;
 
   dispatch({
@@ -68,7 +68,7 @@ export const checkout = products => (dispatch, getState) => {
   shop.buyProducts(products, () => {
     dispatch({
       type: types.CHECKOUT_SUCCESS,
-      cart,
+      state,
       mycounter
     })
     // Replace the line above with line below to rollback on failure:

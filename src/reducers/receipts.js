@@ -1,4 +1,5 @@
 import { combineReducers } from 'redux'
+import { getTotal } from './index.js'
 
 import {
   CHECKOUT_SUCCESS,
@@ -20,11 +21,11 @@ const receipts = (state, action) => {
 
 const receiptDetail = (action) => {
   return {
-    cart:action.cart,
+    cart:action.state.cart,
     detail: {
       id: action.mycounter,
-      timestamp : 111,  // Date.now()
-      total: 31.55,
+      timestamp : Date.now(),
+      total: getTotal(action.state),
       user: "a@b.edu"
     }
  }
