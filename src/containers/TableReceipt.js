@@ -52,10 +52,10 @@ class TableReceipt extends React.Component {
         },
         cell: {
           formatters: [
-            (value, { receiptData }) =>
+            (value, { rowData }) =>
               <span
                 className="remove"
-                onClick={() => this.props.receiptDetail(receiptData.id)}
+                onClick={() => this.props.receiptDetail(rowData.id)}
                 style={{ cursor: "pointer" }}
               >
                 &#x271a;
