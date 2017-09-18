@@ -80,10 +80,13 @@ export const getReceipts = () => {
   console.log("getReceipts was clicked");
 }
 
+const showCartReceipt = cart => ({
+  type: types.RECEIPT_DETAIL,
+  cart
+})
+
 export const receiptDetail = receiptId => (dispatch, getState) => {
-/*
-  const quantityById = getState().cart.quantityById[productId]
-  dispatch(removeFromCartComplete(productId,quantityById))
-*/
+  const cart = getState().receipts.byReceiptId[receiptId].cart
+  dispatch(showCartReceipt(cart))
   console.log('receiptDetail was fired !');
 }
