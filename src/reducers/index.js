@@ -2,7 +2,7 @@ import { combineReducers } from 'redux'
 import cart, * as fromCart from './cart'
 //import { cartReceipts } from './receipts'
 import products, * as fromProducts from './products'
-import receipts from './receipts'
+import receipts, * as fromReceipts from './receipts'
 
 export default combineReducers({
   cart,
@@ -25,6 +25,14 @@ export const getTotal = state =>
 
 export const getCartProducts = state =>
   getAddedIds(state).map(id => ({
+    ...getProduct(state, id),
+    quantity: getQuantity(state, id)
+  }))
+
+const getCartReceiptAddedIds = state => fromReceipts.getCartReceiptAddedIds(state.receipts)
+
+export const getCartProductsFromReceipt = state =>
+  getCartReceiptAddedIds(state).map(id => ({
     ...getProduct(state, id),
     quantity: getQuantity(state, id)
   }))

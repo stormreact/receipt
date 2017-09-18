@@ -1,10 +1,11 @@
 import { combineReducers } from 'redux'
-import { getTotal } from './index.js'
+import { getTotal, getCartProductsFromReceipt } from './index.js'
 
 import {
   CHECKOUT_SUCCESS,
   RECEIVE_RECEIPTS,
-  GET_RECEIPT
+  GET_RECEIPT,
+  RECEIPT_DETAIL
 } from '../constants/ActionTypes'
 
 const receipts = (state, action) => {
@@ -71,9 +72,20 @@ const visibleReceiptIds = (state = [], action) => {
   }
 }
 
+const receiptDetailIds = (state = [], action) => {
+  switch (action.type) {
+    case RECEIPT_DETAIL:
+      let id = action.id;
+      return [ ...state, id ]
+    default:
+      return state
+  }
+}
+
 export default combineReducers({
   byReceiptId,
-  visibleReceiptIds
+  visibleReceiptIds,
+  receiptDetailIds
 })
 
 export const getReceipt = (state, id) =>
@@ -87,3 +99,6 @@ export const getVisibleReceipts = state =>
 
 export const getVisibleReceiptDetails = state =>
     state.visibleReceiptIds.map(id => getReceiptDetail(state, id))
+
+export const getCartReceiptAddedIds = state =>
+    state.receiptDetailIds.map(id => getCartProductsFromReceipt(state, id))

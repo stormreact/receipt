@@ -1,7 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 import { removeFromCart } from "../actions";
-import { getCartProducts } from "../reducers";
+import { getCartProductsFromReceipt } from "../reducers";
 import * as Table from "reactabular-table";
 
 class TableCartReceipt extends React.Component {
@@ -88,7 +88,7 @@ class TableCartReceipt extends React.Component {
 }
 
 const mapStateToProps = state => ({
-  rows: getCartProducts(state)
+  rows: getCartProductsFromReceipt(state)
 });
 
 export default connect(
