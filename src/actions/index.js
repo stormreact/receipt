@@ -87,7 +87,7 @@ const showCartReceipt = (cart,receiptId) => ({
 })
 
 export const receiptDetail = receiptId => (dispatch, getState) => {
-  const cart = getState().receipts.byReceiptId[receiptId].cart
-  dispatch(showCartReceipt(cart,receiptId))
-  console.log('receiptDetail was fired !');
+//  const cart = getState().receipts.byReceiptId[receiptId].cart
+//  dispatch(showCartReceipt(cart,receiptId))
+  console.log('receiptDetail id = ', receiptId);
 }
