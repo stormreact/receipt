@@ -4,21 +4,8 @@ import { getTotal, getCartProductsFromReceipt } from './index.js'
 import {
   CHECKOUT_SUCCESS,
   RECEIVE_RECEIPTS,
-  GET_RECEIPT,
   RECEIPT_DETAIL
 } from '../constants/ActionTypes'
-
-const receipts = (state, action) => {
-  switch (action.type) {
-    case GET_RECEIPT:
-      return {
-        ...state
-      }
-
-    default:
-      return state
-  }
-}
 
 const receiptDetail = (action) => {
   return {
@@ -49,13 +36,6 @@ const byReceiptId = (state = {}, action) => {
         [mycounter] : myreceipt
       }
     default:
-      const { receiptId } = action
-      if (receiptId) {
-        return {
-          ...state,
-          [receiptId]: receipts(state[receiptId], action)
-        }
-      }
       return state
   }
 }

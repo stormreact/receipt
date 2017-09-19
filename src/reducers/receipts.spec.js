@@ -1,4 +1,4 @@
-import { getReceipt, getReceiptDetail, getVisibleReceiptDetails, cartReceipts } from "./receipts";
+import { getReceipt, getReceiptDetail, getVisibleReceiptDetails } from "./receipts";
 import reducer from "./receipts";
 
 describe("receipt initial state", () => {
@@ -6,14 +6,15 @@ describe("receipt initial state", () => {
     it("lists all of the receipts", () => {
       expect("hi").toEqual("hi");
     });
-
+/*
     it("should handle one cartEvent", () => {
       const state = {};
       const cartEvent = {
         type: "CHECKOUT_SUCCESS",
         cart: {
           addedIds: [2],
-          quantityById: { 2: 1 }
+          quantityById: { 2: 1 },
+          mycounter: 0
         }
       };
       const cartReceipt = {
@@ -25,9 +26,9 @@ describe("receipt initial state", () => {
           detail: { id: 0, timestamp: 111, total: 31.55, user: "a@b.edu" }
         }
       };
-      expect(cartReceipts(state, cartEvent)).toEqual(cartReceipt);
+      expect(byReceiptId(state, cartEvent)).toEqual(cartReceipt);
     });
-
+*/
     it("should handle receiving a set of receipts", () => {
       const state = reducer(
         {},
