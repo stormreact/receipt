@@ -75,7 +75,8 @@ const visibleReceiptIds = (state = [], action) => {
 const receiptDetailIds = (state = [], action) => {
   switch (action.type) {
     case RECEIPT_DETAIL:
-      let id = action.id;
+      let id = action.receiptId;
+      let cart = action.cart;
       return [ ...state, id ]
     default:
       return state

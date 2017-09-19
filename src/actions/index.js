@@ -82,12 +82,13 @@ export const getReceipts = () => {
 
 const showCartReceipt = (cart,receiptId) => ({
   type: types.RECEIPT_DETAIL,
-  cart,
+	cart,
   receiptId
 })
 
 export const receiptDetail = receiptId => (dispatch, getState) => {
-//  const cart = getState().receipts.byReceiptId[receiptId].cart
-//  dispatch(showCartReceipt(cart,receiptId))
+  const cart = getState().receipts.byReceiptId[receiptId].cart
+  // dispatch(showCartReceipt(cart,receiptId))
   console.log('receiptDetail id = ', receiptId);
+	console.log(cart);
 }
