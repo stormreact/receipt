@@ -1,5 +1,8 @@
 import { combineReducers } from 'redux'
-import { getTotal, getCartProductsFromReceipt } from './index.js'
+import { getTotal } from './index.js'
+
+import * as fromCart from './cart'
+import * as fromProducts from './products'
 
 import {
   CHECKOUT_SUCCESS,
@@ -56,7 +59,7 @@ const receiptDetailIds = (state = [], action) => {
   switch (action.type) {
     case RECEIPT_DETAIL:
       let id = action.receiptId;
-      let cart = action.cart;
+      // let cart = action.cart;
       return [ ...state, id ]
     default:
       return state
@@ -81,5 +84,26 @@ export const getVisibleReceipts = state =>
 export const getVisibleReceiptDetails = state =>
     state.visibleReceiptIds.map(id => getReceiptDetail(state, id))
 
+/*
 export const getCartReceiptAddedIds = state =>
     state.receiptDetailIds.map(id => getCartProductsFromReceipt(state, id))
+*/
+
+const getQuantity = (state, id) => fromCart.getQuantity(state.cart, id)
+const getProduct = (state, id) => fromProducts.getProduct(state.products, id)
+
+/*
+export const getCartProductsFromReceipt = state =>
+  getCartReceiptAddedIds(state).map(id => ({
+    ...getProduct(state, id),
+    quantity: getQuantity(state, id)
+  }))
+*/
+
+const jj = [0]
+
+export const getCartProductsFromReceipt = state =>
+  jj.map(id => ({
+    ...getProduct(state, id),
+    quantity: getQuantity(state, id)
+}))

@@ -1,7 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 import { removeFromCart } from "../actions";
-import { getCartProductsFromReceipt } from "../reducers";
+import { getCartProductsFromReceipt } from "../reducers/receipts";
 import * as Table from "reactabular-table";
 
 class TableCartReceipt extends React.Component {
