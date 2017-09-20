@@ -63,12 +63,8 @@ const receiptDetailIds = (state = [], action) => {
 
   switch (action.type) {
     case RECEIPT_DETAIL:
-      let cart = action.cart;
-      console.log("INSIDE receiptDetailIds");
-      console.log("addedIds:", cart.addedIds);
-      console.log("quantityById:", cart.quantityById);
-      let back = [ ...state, ...cart.addedIds ]
-      console.log("SEND BACK ", back);
+      let id = action.receiptId;
+      let back = [ id ]
       return back
     default:
       return state
@@ -93,36 +89,31 @@ export const getVisibleReceipts = state =>
 export const getVisibleReceiptDetails = state =>
     state.visibleReceiptIds.map(id => getReceiptDetail(state, id))
 
-/*
-export const getCartReceiptAddedIds = state =>
-    state.receiptDetailIds.map(id => getCartProductsFromReceipt(state, id))
-*/
-
-const getQuantity = (state, id) => fromCart.getQuantity(state.cart, id)
+const getQuantity = (state, id) => fromCart.getQuantity(state, id)
 const getProduct = (state, id) => fromProducts.getProduct(state.products, id)
-
-/*
-export const getCartProductsFromReceipt = state =>
-  getCartReceiptAddedIds(state).map(id => ({
-    ...getProduct(state, id),
-    quantity: getQuantity(state, id)
-  }))
-*/
-
-// const jj = [0]
 
 export const getCartProductsFromReceipt = state => {
 
-  const look = receiptDetailIds().map(id => ({
-    ...getProduct(state, id),
-    quantity: getQuantity(state, id)
-  }))
+  const receiptId = state.receipts.receiptDetailIds[0];
 
-  console.log(state);
-  console.log(getProduct(state,1));
 
-  console.log(receiptDetailIds());
-  console.log('look', look);
+  if (!state.receipts.byReceiptId[receiptId]) {
+    return state;
+  }
+
+
+
+  const cart = state.receipts.byReceiptId[receiptId].cart;
+
+  const look = cart.addedIds.map(id => ({
+      ...getProduct(state, id),
+      quantity: getQuantity(cart, id)
+    }))
+
+  console.log("LOOK ! = ", look)
+/*
+  This is what the returned data structure looks like
+  Leave this here for awhile, and I will remove late
 
   const rows = [
   {
@@ -138,5 +129,6 @@ export const getCartProductsFromReceipt = state => {
     quantity: 10
   }
   ];
-  return rows;
+*/
+  return look;
 }

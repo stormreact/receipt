@@ -80,12 +80,13 @@ export const getReceipts = () => {
   console.log("getReceipts was clicked");
 }
 
-const showCartReceipt = (cart) => ({
+const showCartReceipt = (receiptId) => ({
   	type: types.RECEIPT_DETAIL,
-		cart
+		receiptId
 })
 
 export const receiptDetail = receiptId => (dispatch, getState) => {
-  const cart = getState().receipts.byReceiptId[receiptId].cart
-  dispatch(showCartReceipt(cart))
+	// leave this next line here until the code is working
+  // const cart = getState().receipts.byReceiptId[receiptId].cart
+  dispatch(showCartReceipt(receiptId))
 }
