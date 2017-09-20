@@ -82,29 +82,21 @@ export const getReceiptDetail = (state, id) => state.byReceiptId[id].detail;
 
 export const getReceiptDetailId = (state) => {
   if (state.receipts.receiptDetailIds.length === 0) {
-    console.log("INSIDE getReceiptDetailId undefined")
     return undefined
   }
 
   const id = state.receipts.receiptDetailIds[0];
-  console.log("INSIDE getReceiptDetailId = ",id)
   return(id);
 }
 
 export const getReceiptDetailTotal = (state) => {
-
-  console.log("INSIDE getReceiptDetailTotal");
-
   let total = 0.0;
   if (getReceiptDetailId(state) === undefined) {
     return total
   }
 
   const id = getReceiptDetailId(state);
-  console.log("getReceiptDetailTotal id = ", id);
-
   total = parseFloat(state.receipts.byReceiptId[id].detail.total);
-  console.log("getReceiptDetailTotal = ", total);
   return(total)
 }
 
@@ -132,8 +124,9 @@ export const getCartProductsFromReceipt = state => {
   }));
 
   /*
-  This is what the returned data structure looks like
-  Leave this here for awhile, and I will remove later
+  This is what the returned data structure looks like.
+  Leave this here for awhile, and if folks do not find
+  this helpful then I will remove later, let me know...
 
   const testrows = [
   {
