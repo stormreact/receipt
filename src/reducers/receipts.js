@@ -56,6 +56,11 @@ const visibleReceiptIds = (state = [], action) => {
 }
 
 const receiptDetailIds = (state = [], action) => {
+
+  if (!action) {
+    return state;
+  }
+
   switch (action.type) {
     case RECEIPT_DETAIL:
       let cart = action.cart;
@@ -104,13 +109,21 @@ export const getCartProductsFromReceipt = state =>
   }))
 */
 
-const jj = [0]
+// const jj = [0]
 
 export const getCartProductsFromReceipt = state => {
-  jj.map(id => ({
+
+  const look = receiptDetailIds().map(id => ({
     ...getProduct(state, id),
     quantity: getQuantity(state, id)
   }))
+
+  console.log(state);
+  console.log(getProduct(state,1));
+
+  console.log(receiptDetailIds());
+  console.log('look', look);
+
   const rows = [
   {
     id: 100,
