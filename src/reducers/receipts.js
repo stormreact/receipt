@@ -16,7 +16,7 @@ const receiptDetail = action => {
     detail: {
       id: action.mycounter,
       timestamp: Date.now(),
-      total: getTotal(action.state),
+      total: parseFloat(getTotal(action.state)),
       user: "a@b.edu"
     }
   };
