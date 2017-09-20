@@ -96,7 +96,7 @@ export const getReceiptDetailTotal = (state) => {
   console.log("INSIDE getReceiptDetailTotal");
 
   let total = 0.0;
-  if (!getReceiptDetailId(state)) {
+  if (getReceiptDetailId(state) === undefined) {
     return total
   }
 
