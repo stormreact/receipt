@@ -2,7 +2,7 @@ import React from 'react'
 import ProductsContainer from './ProductsContainer'
 import CartContainer from './CartContainer'
 import ReceiptsContainer from './ReceiptsContainer'
-import EventsContainer from './EventsContainer'
+// import EventsContainer from './EventsContainer'
 import { Flex, Box } from "grid-styled";
 
 const App = () => (
@@ -25,11 +25,13 @@ const App = () => (
         <ReceiptsContainer />
       </Box>
     </Flex>
+{/*
     <Flex>
       <Box px={2}>
         <EventsContainer />
       </Box>
     </Flex>
+*/}
   </div>
 )
 
