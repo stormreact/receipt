@@ -5,7 +5,7 @@ const ReceiptDetail  = ({ receiptDetailId, receiptDetailTotal }) => {
   const hasReceiptDetail = !(typeof receiptDetailId === 'undefined')
   const nodes = hasReceiptDetail ? (
       <div>
-      <p>Total: &#36;{receiptDetailTotal}</p>
+      <h4>Id: {receiptDetailId}, Total: &#36;{receiptDetailTotal}</h4>
       </div>
   ) : (
       <em>There are currently no receipt deails.</em>
