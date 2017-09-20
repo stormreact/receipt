@@ -62,7 +62,9 @@ const receiptDetailIds = (state = [], action) => {
       console.log("INSIDE receiptDetailIds");
       console.log("addedIds:", cart.addedIds);
       console.log("quantityById:", cart.quantityById);
-      return [ ...state ]
+      let back = [ ...state, ...cart.addedIds ]
+      console.log("SEND BACK ", back);
+      return back
     default:
       return state
   }
