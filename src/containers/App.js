@@ -25,6 +25,11 @@ const App = () => (
         <ReceiptsContainer />
       </Box>
     </Flex>
+    <Flex>
+      <Box px={2}>
+        <p>For more details go here...</p>
+      </Box>
+    </Flex>
 {/*
     <Flex>
       <Box px={2}>

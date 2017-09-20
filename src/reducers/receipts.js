@@ -64,8 +64,7 @@ const receiptDetailIds = (state = [], action) => {
   switch (action.type) {
     case RECEIPT_DETAIL:
       let id = action.receiptId;
-      let back = [ id ]
-      return back
+      return [id]
     default:
       return state
   }
@@ -96,24 +95,20 @@ export const getCartProductsFromReceipt = state => {
 
   const receiptId = state.receipts.receiptDetailIds[0];
 
-
   if (!state.receipts.byReceiptId[receiptId]) {
     return state;
   }
 
-
-
   const cart = state.receipts.byReceiptId[receiptId].cart;
 
-  const look = cart.addedIds.map(id => ({
+  const rows = cart.addedIds.map(id => ({
       ...getProduct(state, id),
       quantity: getQuantity(cart, id)
     }))
 
-  console.log("LOOK ! = ", look)
 /*
   This is what the returned data structure looks like
-  Leave this here for awhile, and I will remove late
+  Leave this here for awhile, and I will remove later
 
   const rows = [
   {
@@ -130,5 +125,5 @@ export const getCartProductsFromReceipt = state => {
   }
   ];
 */
-  return look;
+  return rows;
 }
