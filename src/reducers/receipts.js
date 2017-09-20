@@ -16,7 +16,7 @@ const receiptDetail = action => {
     detail: {
       id: action.mycounter,
       timestamp: Date.now(),
-      total: parseFloat(getTotal(action.state)),
+      total: getTotal(action.state),
       user: "a@b.edu"
     }
   };
@@ -96,7 +96,7 @@ export const getReceiptDetailTotal = state => {
   }
 
   const id = getReceiptDetailId(state);
-  total = parseFloat(state.receipts.byReceiptId[id].detail.total);
+  total = state.receipts.byReceiptId[id].detail.total;
   return total;
 };
 

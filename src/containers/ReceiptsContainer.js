@@ -33,7 +33,7 @@ const ReceiptsContainer = ({ receiptDetailId, receiptDetailTotal }) =>
 
 ReceiptsContainer.propTypes = {
   receiptDetailId: PropTypes.number,
-  receiptDetailTotal: PropTypes.number
+  receiptDetailTotal: PropTypes.string
 };
 
 const mapStateToProps = state => ({
