@@ -41,27 +41,6 @@ class TableCartReceipt extends React.Component {
         props: {
           style: { minWidth: 70, width: 70 }
         }
-      },
-      {
-        property: "removefromcart",
-        header: {
-          label: "Remove from cart"
-        },
-        props: {
-          style: { minWidth: 140, width: 140 }
-        },
-        cell: {
-          formatters: [
-            (value, { rowData }) =>
-              <span
-                className="remove"
-                onClick={() => this.props.removeFromCart(rowData.id)}
-                style={{ cursor: "pointer" }}
-              >
-                &#x2715;
-              </span>
-          ]
-        }
       }
     ];
   }

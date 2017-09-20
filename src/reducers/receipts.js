@@ -104,8 +104,24 @@ export const getCartProductsFromReceipt = state =>
 
 const jj = [0]
 
-export const getCartProductsFromReceipt = state =>
+export const getCartProductsFromReceipt = state => {
   jj.map(id => ({
     ...getProduct(state, id),
     quantity: getQuantity(state, id)
-}))
+  }))
+  const rows = [
+  {
+    id: 100,
+    title: 'John',
+    price: 10.11,
+    quantity: 3
+  },
+  {
+    id: 101,
+    title: 'Jack',
+    price: 11.11,
+    quantity: 10
+  }
+  ];
+  return rows;
+}
