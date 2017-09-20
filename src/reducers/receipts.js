@@ -80,25 +80,25 @@ export const getReceipt = (state, id) => state.byReceiptId[id];
 
 export const getReceiptDetail = (state, id) => state.byReceiptId[id].detail;
 
-export const getReceiptDetailId = (state) => {
+export const getReceiptDetailId = state => {
   if (state.receipts.receiptDetailIds.length === 0) {
-    return undefined
+    return undefined;
   }
 
   const id = state.receipts.receiptDetailIds[0];
-  return(id);
-}
+  return id;
+};
 
-export const getReceiptDetailTotal = (state) => {
+export const getReceiptDetailTotal = state => {
   let total = 0.0;
   if (getReceiptDetailId(state) === undefined) {
-    return total
+    return total;
   }
 
   const id = getReceiptDetailId(state);
   total = parseFloat(state.receipts.byReceiptId[id].detail.total);
-  return(total)
-}
+  return total;
+};
 
 export const getVisibleReceipts = state =>
   state.visibleReceiptIds.map(id => getReceipt(state, id));
