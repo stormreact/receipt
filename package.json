@@ -1,7 +1,7 @@
 {
-  "name": "shopping-cart",
+  "name": "receipt",
   "version": "0.0.1",
-  "private": true,
+  "license": "MIT",
   "devDependencies": {
     "enzyme": "^2.8.2",
     "react-scripts": "^1.0.1",
