@@ -27,7 +27,7 @@ const App = () => (
     </Flex>
     <Flex>
       <Box px={2}>
-        <p>For more details go here...</p>
+        <p>For more details go to the <a href="https://github.com/stormasm/receipt">github repo</a></p>
       </Box>
     </Flex>
 {/*
