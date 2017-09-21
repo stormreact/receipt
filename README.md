@@ -1,5 +1,6 @@
 
-# Redux Shopping Cart Example With Added Functionality
+# Redux Shopping Cart Example
+### With Added Functionality
 
 This is a fork of the [redux shopping cart](https://github.com/reactjs/redux/tree/master/examples/shopping-cart) with the added functionality of [reactabular](https://github.com/reactabular/reactabular) and the ability to remove items from your cart prior to checking out, and the ability to see previous checkout transactions via the overall receipt view and the detailed receipt view.
 
