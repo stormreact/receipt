@@ -12,7 +12,7 @@ This is a fork of the [redux shopping cart](https://github.com/reactjs/redux/tre
 
 This project template was built with [Create React App](https://github.com/facebookincubator/create-react-app), which provides a simple way to start React projects with no build configuration needed.
 
-## To run locally
+### To run locally
 
 ```
 git clone git@github.com:stormasm/receipt.git
